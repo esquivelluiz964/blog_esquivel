@@ -20,8 +20,16 @@ def about():
 
 @public_bp.route('/contact', methods=['GET', 'POST'])
 def contact():
+    from models import db, Contact
     form = ContactForm()
     if form.validate_on_submit():
+        contact = Contact(
+            name=form.name.data,
+            email=form.email.data,
+            message=form.message.data
+        )
+        db.session.add(contact)
+        db.session.commit()
         flash('Mensagem enviada — obrigado!', 'success')
         return redirect(url_for('public.contact'))
     return render_template('public/contact.html', form=form)

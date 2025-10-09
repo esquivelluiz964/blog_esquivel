@@ -25,3 +25,14 @@ class Text(db.Model):
     published = db.Column(db.Boolean, default=False)
     section_id = db.Column(db.Integer, db.ForeignKey('section.id'), nullable=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+class Contact(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(120), nullable=False)
+    email = db.Column(db.String(120), nullable=False)
+    message = db.Column(db.Text, nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    responded = db.Column(db.Boolean, default=False)
+
+    def __repr__(self):
+        return f"<Contact {self.name} ({'Respondido' if self.responded else 'Novo'})>"

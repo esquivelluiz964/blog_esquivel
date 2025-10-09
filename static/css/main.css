@@ -102,3 +102,193 @@ body{
 .flash-info{background:#eef2ff;color:#1f3d7a}
 
 .site-footer{padding:24px 0;text-align:center;color:var(--muted);border-top:1px solid rgba(0,0,0,0.03);margin-top:48px}
+
+/* ==========================
+   FORMULÁRIOS UNIVERSAIS
+   ========================== */
+
+form {
+  background: var(--surface);
+  padding: 24px;
+  border-radius: var(--radius);
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+  max-width: 700px;
+  margin: 24px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Rótulos elegantes */
+form label {
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+  font-family: var(--font-serif);
+}
+
+/* Campos base */
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form textarea,
+form select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 8px;
+  background-color: #fff;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: var(--text);
+  transition: all 0.2s ease;
+  resize: vertical;
+}
+
+/* Interação */
+form input:focus,
+form textarea:focus,
+form select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(11, 95, 255, 0.1);
+  outline: none;
+}
+
+/* Checkbox e booleanos */
+form input[type="checkbox"] {
+  accent-color: var(--accent);
+  transform: scale(1.2);
+  margin-right: 8px;
+}
+
+/* Botão universal */
+form button,
+form .btn {
+  background: var(--accent);
+  color: white;
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: 0;
+  font-weight: 600;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: all 0.2s ease;
+}
+
+form button:hover,
+form .btn:hover {
+  background: #0848d8;
+  transform: translateY(-1px);
+}
+
+/* Versão dourada opcional */
+form button.alt {
+  background: var(--gold);
+}
+form button.alt:hover {
+  background: #8a6b00;
+}
+
+/* TextArea especial */
+form textarea {
+  font-family: var(--font-sans);
+  line-height: 1.5;
+}
+
+/* Mensagens de erro (caso adicione futuramente via FlaskForm.errors) */
+.form-error {
+  color: #b91c1c;
+  background: #fee2e2;
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 14px;
+}
+
+/* Layout alternativo: formulário largo */
+.form-wide {
+  max-width: 900px;
+}
+
+/* Compacto (útil em painéis) */
+.form-compact {
+  padding: 16px;
+  gap: 12px;
+}
+
+/* Estilo do título */
+form h2, form h3 {
+  margin-top: 0;
+  font-family: var(--font-serif);
+  color: var(--text);
+  font-weight: 700;
+}
+
+/* Campos alinhados lado a lado (opcional) */
+.form-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.form-inline > * {
+  flex: 1;
+  min-width: 200px;
+}
+
+/* Placeholder mais elegante */
+::placeholder {
+  color: var(--muted);
+  opacity: 0.8;
+}
+
+/* Feedback visual de envio */
+form.submitting {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* ==========================
+   ADMIN - TABELAS DE CONTATOS
+   ========================== */
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+  background: var(--surface);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+}
+
+.data-table th, .data-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  vertical-align: top;
+  text-align: left;
+}
+
+.data-table th {
+  background: rgba(11,95,255,0.06);
+  font-weight: 700;
+}
+
+.data-table tr.responded {
+  background-color: #f3f4f6;
+  color: var(--muted);
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.badge-success {
+  background: #e6ffed;
+  color: #07532a;
+}
+.badge-warning {
+  background: #fff8e1;
+  color: #8a6b00;
+}

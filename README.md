@@ -23,6 +23,9 @@ pip install -r requirements.txt
 ```bash
 export FLASK_APP=app.py
 export FLASK_ENV=development
+flask db init    # só se for a primeira vez (podem já existir arquivos de migrations do protótipo)
+flask db migrate -m "create tables"
+flask db upgrade
 flask run
 ```
 A aplicação cria o banco e faz o *seed* com um usuário admin (valores por padrão do `.env.example`) na primeira execução.

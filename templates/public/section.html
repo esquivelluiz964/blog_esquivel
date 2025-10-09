@@ -5,7 +5,7 @@
   <p>{{ section.description }}</p>
   <div class="grid">
     {% for t in texts %}
-      <a class="card-link" href="{{ url_for('text_view', text_id=t.id) }}">
+      <a class="card-link" href="{{ url_for('public.text_view', text_id=t.id) }}">
         {{ card(t.title, t.subtitle) }}
       </a>
     {% else %}

@@ -4,11 +4,11 @@
   <div class="admin-grid">
     <section>
       <h3>Seções</h3>
-      <a class="btn" href="{{ url_for('admin_section_new') }}">Nova Seção</a>
+      <a class="btn" href="{{ url_for('sections.admin_section_new') }}">Nova Seção</a>
       <ul>
         {% for s in sections %}
-          <li>{{ s.title }} — <a href="{{ url_for('admin_section_edit', sid=s.id) }}">editar</a>
-          <form method="post" action="{{ url_for('admin_section_delete', sid=s.id) }}" style="display:inline">
+          <li>{{ s.title }} — <a href="{{ url_for('sections.admin_section_edit', sid=s.id) }}">editar</a>
+          <form method="post" action="{{ url_for('sections.admin_section_delete', sid=s.id) }}" style="display:inline">
             <button class="link-like" type="submit">remover</button>
           </form>
           </li>
@@ -18,11 +18,11 @@
 
     <section>
       <h3>Textos recentes</h3>
-      <a class="btn" href="{{ url_for('admin_text_new') }}">Novo Texto</a>
+      <a class="btn" href="{{ url_for('texts.admin_text_new') }}">Novo Texto</a>
       <ul>
         {% for t in texts %}
-          <li>{{ t.title }} — <a href="{{ url_for('admin_text_edit', tid=t.id) }}">editar</a>
-          <form method="post" action="{{ url_for('admin_text_delete', tid=t.id) }}" style="display:inline">
+          <li>{{ t.title }} — <a href="{{ url_for('texts.admin_text_edit', tid=t.id) }}">editar</a>
+          <form method="post" action="{{ url_for('texts.admin_text_delete', tid=t.id) }}" style="display:inline">
             <button class="link-like" type="submit">remover</button>
           </form>
           </li>

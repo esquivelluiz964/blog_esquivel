@@ -1,0 +1,1 @@
+Use this folder to drop e-book files. Link them via /static_files/<filename>

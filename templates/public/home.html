@@ -1,0 +1,32 @@
+{% extends '_base.html' %}
+{% from 'components/macros.html' import card %}
+{% block content %}
+  <section class="hero">
+    <h1>Um olhar aos escritos de Luiz Eduardo Pontes Esquivel</h1>
+    <p class="hero-sub">Entre a razão e a poesia, escrevo para me encontrar.</p>
+  </section>
+
+  <section class="sections-list">
+    <h2>Seções</h2>
+    <div class="grid">
+      {% for s in sections %}
+        <a class="card-link" href="{{ url_for('section_view', section_id=s.id) }}">
+          {{ card(s.title, s.description) }}
+        </a>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="recent">
+    <h2>Recentes</h2>
+    <div class="grid-small">
+      {% for t in recent %}
+        <a class="card-link" href="{{ url_for('text_view', text_id=t.id) }}">
+          {{ card(t.title, t.subtitle) }}
+        </a>
+      {% else %}
+        <p>Sem textos publicados ainda.</p>
+      {% endfor %}
+    </div>
+  </section>
+{% endblock %}

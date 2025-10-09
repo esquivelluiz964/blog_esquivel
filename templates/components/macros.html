@@ -1,0 +1,7 @@
+{% macro card(title, subtitle='', body='') -%}
+  <article class="card">
+    <h3 class="card-title">{{ title }}</h3>
+    {% if subtitle %}<p class="card-subtitle">{{ subtitle }}</p>{% endif %}
+    <div class="card-body">{{ body|safe }}</div>
+  </article>
+{%- endmacro %}

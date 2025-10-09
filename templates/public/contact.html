@@ -1,0 +1,14 @@
+{% extends '_base.html' %}
+{% block content %}
+  <h2>Contato</h2>
+  <form method="post">
+    {{ form.hidden_tag() }}
+    <label>Nome</label>
+    {{ form.name() }}
+    <label>Email</label>
+    {{ form.email() }}
+    <label>Mensagem</label>
+    {{ form.message(rows=6) }}
+    <button type="submit" class="btn">Enviar</button>
+  </form>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends '_base.html' %}
+{% block content %}
+  <h2>Painel — Login</h2>
+  <form method="post">
+    {{ form.hidden_tag() }}
+    <label>Email</label>
+    {{ form.email() }}
+    <label>Senha</label>
+    {{ form.password() }}
+    <button class="btn" type="submit">Entrar</button>
+  </form>
+{% endblock %}

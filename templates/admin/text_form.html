@@ -1,0 +1,13 @@
+{% extends '_base.html' %}
+{% block content %}
+  <h2>{{ action }} Texto</h2>
+  <form method="post">
+    {{ form.hidden_tag() }}
+    <label>Título</label>{{ form.title() }}
+    <label>Subtítulo</label>{{ form.subtitle() }}
+    <label>Seção</label>{{ form.section() }}
+    <label>Corpo (use markdown)</label>{{ form.body(rows=12) }}
+    <label>{{ form.published() }} Publicado</label>
+    <button class="btn" type="submit">{{ action }}</button>
+  </form>
+{% endblock %}

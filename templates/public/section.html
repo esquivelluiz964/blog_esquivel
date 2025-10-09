@@ -1,0 +1,15 @@
+{% extends '_base.html' %}
+{% from 'components/macros.html' import card %}
+{% block content %}
+  <h2>{{ section.title }}</h2>
+  <p>{{ section.description }}</p>
+  <div class="grid">
+    {% for t in texts %}
+      <a class="card-link" href="{{ url_for('text_view', text_id=t.id) }}">
+        {{ card(t.title, t.subtitle) }}
+      </a>
+    {% else %}
+      <p>Sem textos publicados nesta seção.</p>
+    {% endfor %}
+  </div>
+{% endblock %}

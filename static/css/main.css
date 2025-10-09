@@ -1,0 +1,104 @@
+:root{
+  --bg: #fbfbfb;
+  --surface: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --accent: #0b5fff;
+  --gold: #b08900;
+  --max-width: 1000px;
+  --radius: 12px;
+  --container-padding: 24px;
+  --font-serif: 'EB Garamond', serif;
+  --font-sans: 'Inter', sans-serif;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: var(--font-sans);
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+}
+.container{
+  max-width:var(--max-width);
+  margin:0 auto;
+  padding:var(--container-padding);
+}
+
+.site-header{
+  background: linear-gradient(90deg, rgba(11,95,255,0.06), rgba(176,140,0,0.03));
+  border-bottom:1px solid rgba(0,0,0,0.04);
+}
+.header-inner{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.brand{
+  font-weight:700;
+  text-decoration:none;
+  color:var(--text);
+  font-size:20px;
+}
+.main-nav a{
+  margin-left:12px;
+  text-decoration:none;
+  color:var(--muted);
+}
+.hero{
+  padding:48px 0;
+}
+.hero h1{
+  font-family: var(--font-serif);
+  font-size:38px;
+  margin:0 0 8px 0;
+}
+.hero-sub{color:var(--muted)}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:16px;
+  margin-top:12px;
+}
+.grid-small{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+
+.card{
+  background:var(--surface);
+  padding:16px;
+  border-radius:var(--radius);
+  box-shadow:0 6px 18px rgba(15,23,42,0.04);
+  min-height:120px;
+}
+.card-title{font-weight:700;margin:0 0 6px 0}
+.card-subtitle{color:var(--muted);margin:0 0 8px 0}
+.card-body{color:var(--muted)}
+
+.card-link{text-decoration:none;color:inherit;display:block}
+
+.btn{
+  background:var(--accent);
+  color:white;
+  padding:8px 12px;
+  border-radius:8px;
+  border:0;
+  cursor:pointer;
+  text-decoration:none;
+}
+.link-like{
+  background:none;border:0;color:var(--accent);cursor:pointer;text-decoration:underline;padding:0;font:inherit
+}
+.admin-grid{display:flex;gap:24px}
+.admin-grid section{flex:1;background:var(--surface);padding:12px;border-radius:8px}
+
+.text-full h1{font-family:var(--font-serif);font-size:28px;margin-bottom:0}
+.text-body{margin-top:18px}
+.flash-area{margin:12px 0}
+.flash{padding:8px;border-radius:8px;margin-bottom:6px}
+.flash-success{background:#e6ffed;color:#07532a}
+.flash-danger{background:#ffe6e6;color:#7a1b1b}
+.flash-info{background:#eef2ff;color:#1f3d7a}
+
+.site-footer{padding:24px 0;text-align:center;color:var(--muted);border-top:1px solid rgba(0,0,0,0.03);margin-top:48px}

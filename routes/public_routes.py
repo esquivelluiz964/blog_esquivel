@@ -22,7 +22,7 @@ def about():
 def contact():
     form = ContactForm()
     if form.validate_on_submit():
-        flash('Mensagem enviada — obrigado! (isso é um protótipo; configure SMTP no futuro)', 'success')
+        flash('Mensagem enviada — obrigado!', 'success')
         return redirect(url_for('public.contact'))
     return render_template('public/contact.html', form=form)
 

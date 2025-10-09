@@ -6,9 +6,9 @@ import os
 app = create_app()
 with app.app_context():
     db.create_all()
-    if not User.query.filter_by(email=os.environ.get('ADMIN_EMAIL','admin@example.com')).first():
-        admin = User(email=os.environ.get('ADMIN_EMAIL','admin@example.com'),
-                     password_hash=generate_password_hash(os.environ.get('ADMIN_PASSWORD','ChangeMe123!')))
+    if not User.query.filter_by(email=os.environ.get('ADMIN_EMAIL','admin@gmail.com')).first():
+        admin = User(email=os.environ.get('ADMIN_EMAIL','admin@gmail.com'),
+                     password_hash=generate_password_hash(os.environ.get('ADMIN_PASSWORD','123456')))
         db.session.add(admin)
     sections = [
         ('Astrobiologia, ciência', 'Textos criados a partir da minha pesquisa acadêmica'),

@@ -39,12 +39,12 @@ class Contact(db.Model):
 
 class WeeklyText(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    text_id = db.Column(db.Integer, db.ForeignKey('text.id'), nullable=False)
-    start_date = db.Column(db.DateTime, default=datetime.utcnow)
+    text_id = db.Column(db.Integer, db.ForeignKey('text.id', ondelete='CASCADE'), nullable=False)
+    start_date = db.Column(db.DateTime)
     end_date = db.Column(db.DateTime)
     active = db.Column(db.Boolean, default=True)
 
-    text = db.relationship('Text', backref='weekly_entry', lazy=True)
+    text = db.relationship('Text', backref=db.backref('weekly_entries', passive_deletes=True))
 
     @staticmethod
     def rotate_weekly_text():

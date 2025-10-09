@@ -5,6 +5,8 @@ from flask_migrate import Migrate
 from flask_login import LoginManager
 from werkzeug.security import generate_password_hash
 from models import db, User, Section, Text
+from apscheduler.schedulers.background import BackgroundScheduler
+from models import WeeklyText
 
 # Importa os blueprints
 from routes.public_routes import public_bp
@@ -69,6 +71,10 @@ def create_app():
     @app.route('/static_files/<path:filename>')
     def static_files(filename):
         return send_from_directory(os.path.join(app.root_path, 'static_files'), filename)
+
+    scheduler = BackgroundScheduler()
+    scheduler.add_job(func=WeeklyText.rotate_weekly_text, trigger='interval', hours=12)
+    scheduler.start()
 
     return app
 

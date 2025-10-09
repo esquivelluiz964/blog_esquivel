@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
+from datetime import datetime, timedelta
 from flask_login import UserMixin
 
 db = SQLAlchemy()
@@ -36,3 +36,31 @@ class Contact(db.Model):
 
     def __repr__(self):
         return f"<Contact {self.name} ({'Respondido' if self.responded else 'Novo'})>"
+
+class WeeklyText(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    text_id = db.Column(db.Integer, db.ForeignKey('text.id'), nullable=False)
+    start_date = db.Column(db.DateTime, default=datetime.utcnow)
+    end_date = db.Column(db.DateTime)
+    active = db.Column(db.Boolean, default=True)
+
+    text = db.relationship('Text', backref='weekly_entry', lazy=True)
+
+    @staticmethod
+    def rotate_weekly_text():
+        """Troca automaticamente o texto da semana se já passou 7 dias."""
+        current = WeeklyText.query.filter_by(active=True).first()
+        if current and current.end_date and current.end_date < datetime.utcnow():
+            current.active = False
+            db.session.commit()
+            # Busca o próximo texto publicado mais recente
+            next_text = Text.query.filter_by(published=True).order_by(Text.created_at.desc()).first()
+            if next_text:
+                new_week = WeeklyText(
+                    text_id=next_text.id,
+                    start_date=datetime.utcnow(),
+                    end_date=datetime.utcnow() + timedelta(days=7),
+                    active=True
+                )
+                db.session.add(new_week)
+                db.session.commit()

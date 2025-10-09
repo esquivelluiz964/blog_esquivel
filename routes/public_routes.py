@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, redirect, url_for, flash
-from models import Section, Text
+from models import Section, Text, WeeklyText
 from forms import ContactForm
 import markdown2
 
@@ -47,3 +47,12 @@ def text_view(text_id):
     text = Text.query.get_or_404(text_id)
     html = markdown2.markdown(text.body or '')
     return render_template('public/text.html', text=text, html=html)
+
+@public_bp.route('/texto-da-semana')
+def texto_da_semana():
+    WeeklyText.rotate_weekly_text()  # garante atualização automática
+    current = WeeklyText.query.filter_by(active=True).first()
+    if not current:
+        flash("Nenhum texto da semana disponível.", "info")
+        return redirect(url_for('public.home'))
+    return render_template('public/texto_semana.html', text=current.text)

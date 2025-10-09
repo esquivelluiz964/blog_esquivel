@@ -1,7 +1,8 @@
-from flask import Blueprint, render_template, redirect, url_for, flash
+from flask import Blueprint, render_template, redirect, url_for, flash, request
+from datetime import datetime, timedelta
 from flask_login import login_user, logout_user, login_required, current_user
 from werkzeug.security import check_password_hash
-from models import User, Section, Text
+from models import User, Section, Text, WeeklyText
 from forms import LoginForm
 from models import db, Contact
 
@@ -53,3 +54,27 @@ def admin_contact_responded(cid):
     db.session.commit()
     flash(f'Marcado como respondido: {contact.name}', 'info')
     return redirect(url_for('admin.admin_contacts'))
+
+@admin_bp.route('/weekly-text', methods=['GET', 'POST'])
+@login_required
+def admin_weekly_text():
+    texts = Text.query.filter_by(published=True).order_by(Text.created_at.desc()).all()
+
+    if request.method == 'POST':
+        text_id = request.form.get('text_id')
+        if text_id:
+            WeeklyText.query.update({'active': False})
+            db.session.commit()
+            new_week = WeeklyText(
+                text_id=text_id,
+                start_date=datetime.utcnow(),
+                end_date=datetime.utcnow() + timedelta(days=7),
+                active=True
+            )
+            db.session.add(new_week)
+            db.session.commit()
+            flash("Novo texto da semana definido!", "success")
+            return redirect(url_for('admin.admin_dashboard'))
+
+    current = WeeklyText.query.filter_by(active=True).first()
+    return render_template('admin/weekly_text.html', texts=texts, current=current)

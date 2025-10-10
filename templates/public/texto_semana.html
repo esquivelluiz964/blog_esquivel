@@ -1,12 +1,9 @@
 {% extends "_base.html" %}
 {% block content %}
-<div class="text-full">
-  <h1>{{ text.title }}</h1>
-  {% if text.subtitle %}
-  <p class="card-subtitle">{{ text.subtitle }}</p>
-  {% endif %}
-  <div class="text-body">
-    {{ text.body|safe }}
-  </div>
-</div>
+  <article class="text-full">
+    <h1>{{ text.title }}</h1>
+    {% if text.subtitle %}<h3>{{ text.subtitle }}</h3>{% endif %}
+    <hr/>
+    <div class="text-body">{{ html|safe }}</div>
+  </article>
 {% endblock %}

@@ -55,4 +55,5 @@ def texto_da_semana():
     if not current:
         flash("Nenhum texto da semana disponível.", "info")
         return redirect(url_for('public.home'))
-    return render_template('public/texto_semana.html', text=current.text)
+    html = markdown2.markdown(current.text.body or '')
+    return render_template('public/texto_semana.html', text=current.text, html=html)

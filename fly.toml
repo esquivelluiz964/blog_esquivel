@@ -1,10 +1,14 @@
 app = "blog-esquivel"
 
+primary_region = "gru" # São Paulo – muda se quiser
+
 [build]
   dockerfile = "Dockerfile"
 
 [env]
   PORT = "8080"
+  FLASK_ENV = "production"
+  FLASK_APP = "app:create_app"
 
 [[services]]
   internal_port = 8080
@@ -17,3 +21,7 @@ app = "blog-esquivel"
   [[services.ports]]
     handlers = ["tls", "http"]
     port = 443
+
+  [[services.tcp_checks]]
+    interval = "10s"
+    timeout = "2s"

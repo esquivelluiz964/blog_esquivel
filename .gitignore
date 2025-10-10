@@ -1,7 +1,5 @@
 __pycache__/
 *.pyc
-instance/
 .env
-luis_site.db
 *.sqlite3
 /migrations

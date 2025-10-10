@@ -292,3 +292,21 @@ form.submitting {
   background: #fff8e1;
   color: #8a6b00;
 }
+
+.category-block {
+  margin-top: 32px;
+  padding: 16px;
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+}
+
+.category-title {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  margin-bottom: 12px;
+  color: var(--gold);
+  border-bottom: 2px solid rgba(176,140,0,0.2);
+  padding-bottom: 4px;
+}
+

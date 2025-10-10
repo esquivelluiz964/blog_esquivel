@@ -3,13 +3,21 @@
 {% block content %}
   <h2>{{ section.title }}</h2>
   <p>{{ section.description }}</p>
-  <div class="grid">
-    {% for t in texts %}
-      <a class="card-link" href="{{ url_for('public.text_view', text_id=t.id) }}">
-        {{ card(t.title, t.subtitle) }}
-      </a>
-    {% else %}
-      <p>Sem textos publicados nesta seção.</p>
+
+  {% if grouped %}
+    {% for category, texts in grouped.items() %}
+      <div class="category-block">
+        <h3 class="category-title">{{ category }}</h3>
+        <div class="grid">
+          {% for t in texts %}
+            <a class="card-link" href="{{ url_for('public.text_view', text_id=t.id) }}">
+              {{ card(t.title, t.subtitle) }}
+            </a>
+          {% endfor %}
+        </div>
+      </div>
     {% endfor %}
-  </div>
+  {% else %}
+    <p>Sem textos publicados nesta seção.</p>
+  {% endif %}
 {% endblock %}

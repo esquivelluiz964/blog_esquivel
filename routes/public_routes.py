@@ -38,8 +38,23 @@ def contact():
 @public_bp.route('/section/<int:section_id>')
 def section_view(section_id):
     section = Section.query.get_or_404(section_id)
-    texts = Text.query.filter_by(section_id=section.id, published=True).order_by(Text.created_at.desc()).all()
-    return render_template('public/section.html', section=section, texts=texts)
+    texts = (
+        Text.query.filter_by(section_id=section.id, published=True)
+        .order_by(Text.created_at.desc())
+        .all()
+    )
+
+    # Agrupa por "categoria" detectada no título ou subtítulo
+    grouped = {}
+    for t in texts:
+        if t.subtitle and '|' in t.subtitle:
+            category, subtitle = [x.strip() for x in t.subtitle.split('|', 1)]
+            t.subtitle = subtitle  # atualiza só para exibição
+        else:
+            category = 'Diversos'
+        grouped.setdefault(category, []).append(t)
+
+    return render_template('public/section.html', section=section, grouped=grouped)
 
 
 @public_bp.route('/text/<int:text_id>')

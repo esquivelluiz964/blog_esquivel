@@ -1,10 +1,14 @@
 {% extends '_base.html' %}
 {% block content %}
-  <article class="text-full">
-    <h1>{{ text.title }}</h1>
-    {% if text.subtitle %}<h3>{{ text.subtitle }}</h3>{% endif %}
-    <div class="meta">Publicado em {{ text.created_at.strftime('%Y-%m-%d') }} — Seção: {{ text.section.title if text.section else '—' }}</div>
-    <hr/>
-    <div class="text-body">{{ html|safe }}</div>
-  </article>
+<article class="text-full fade-in">
+  <h1>{{ text.title }}</h1>
+  {% if text.subtitle %}
+    <h3>{{ text.subtitle }}</h3>
+  {% endif %}
+  <div class="meta">
+    Publicado em {{ text.created_at.strftime('%d/%m/%Y') }} — 
+    Seção: {{ text.section.title if text.section else '—' }}
+  </div>
+  <div class="text-body">{{ html|safe }}</div>
+</article>
 {% endblock %}

@@ -1,312 +1,182 @@
-:root{
-  --bg: #fbfbfb;
+:root {
+  --bg: #f8f6f1;
   --surface: #ffffff;
-  --text: #111827;
-  --muted: #6b7280;
+  --text: #2e2e2e;
+  --muted: #7a7a7a;
   --accent: #0b5fff;
   --gold: #b08900;
-  --max-width: 1000px;
-  --radius: 12px;
-  --container-padding: 24px;
-  --font-serif: 'EB Garamond', serif;
-  --font-sans: 'Inter', sans-serif;
+  --radius: 14px;
+  --max-width: 1100px;
+  --font-serif: "EB Garamond", serif;
+  --font-sans: "Inter", sans-serif;
 }
 
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;
+/* Base */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
   font-family: var(--font-sans);
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.6;
-}
-.container{
-  max-width:var(--max-width);
-  margin:0 auto;
-  padding:var(--container-padding);
+  line-height: 1.7;
+  overflow-x: hidden;
 }
 
-.site-header{
-  background: linear-gradient(90deg, rgba(11,95,255,0.06), rgba(176,140,0,0.03));
-  border-bottom:1px solid rgba(0,0,0,0.04);
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2rem;
 }
-.header-inner{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-.brand{
-  font-weight:700;
-  text-decoration:none;
-  color:var(--text);
-  font-size:20px;
-}
-.main-nav a{
-  margin-left:12px;
-  text-decoration:none;
-  color:var(--muted);
-}
-.hero{
-  padding:48px 0;
-}
-.hero h1{
-  font-family: var(--font-serif);
-  font-size:38px;
-  margin:0 0 8px 0;
-}
-.hero-sub{color:var(--muted)}
 
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:16px;
-  margin-top:12px;
+/* Header */
+.site-header {
+  background: linear-gradient(90deg, rgba(11,95,255,0.05), rgba(176,140,0,0.05));
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  backdrop-filter: blur(6px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
-.grid-small{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
-
-.card{
-  background:var(--surface);
-  padding:16px;
-  border-radius:var(--radius);
-  box-shadow:0 6px 18px rgba(15,23,42,0.04);
-  min-height:120px;
-}
-.card-title{font-weight:700;margin:0 0 6px 0}
-.card-subtitle{color:var(--muted);margin:0 0 8px 0}
-.card-body{color:var(--muted)}
-
-.card-link{text-decoration:none;color:inherit;display:block}
-
-.btn{
-  background:var(--accent);
-  color:white;
-  padding:8px 12px;
-  border-radius:8px;
-  border:0;
-  cursor:pointer;
-  text-decoration:none;
-}
-.link-like{
-  background:none;border:0;color:var(--accent);cursor:pointer;text-decoration:underline;padding:0;font:inherit
-}
-.admin-grid{display:flex;gap:24px}
-.admin-grid section{flex:1;background:var(--surface);padding:12px;border-radius:8px}
-
-.text-full h1{font-family:var(--font-serif);font-size:28px;margin-bottom:0}
-.text-body{margin-top:18px}
-.flash-area{margin:12px 0}
-.flash{padding:8px;border-radius:8px;margin-bottom:6px}
-.flash-success{background:#e6ffed;color:#07532a}
-.flash-danger{background:#ffe6e6;color:#7a1b1b}
-.flash-info{background:#eef2ff;color:#1f3d7a}
-
-.site-footer{padding:24px 0;text-align:center;color:var(--muted);border-top:1px solid rgba(0,0,0,0.03);margin-top:48px}
-
-/* ==========================
-   FORMULÁRIOS UNIVERSAIS
-   ========================== */
-
-form {
-  background: var(--surface);
-  padding: 24px;
-  border-radius: var(--radius);
-  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
-  max-width: 700px;
-  margin: 24px auto;
+.header-inner {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
 }
-
-/* Rótulos elegantes */
-form label {
-  font-weight: 600;
-  color: var(--text);
-  margin-bottom: 4px;
+.brand {
   font-family: var(--font-serif);
-}
-
-/* Campos base */
-form input[type="text"],
-form input[type="email"],
-form input[type="password"],
-form textarea,
-form select {
-  width: 100%;
-  padding: 10px 12px;
-  border: 1px solid rgba(0,0,0,0.1);
-  border-radius: 8px;
-  background-color: #fff;
-  font-family: var(--font-sans);
-  font-size: 15px;
+  font-size: 1.4rem;
   color: var(--text);
-  transition: all 0.2s ease;
-  resize: vertical;
+  text-decoration: none;
+  font-weight: 700;
+}
+.main-nav a {
+  margin-left: 16px;
+  text-decoration: none;
+  color: var(--muted);
+  transition: color 0.3s ease;
+}
+.main-nav a:hover {
+  color: var(--accent);
 }
 
-/* Interação */
-form input:focus,
-form textarea:focus,
-form select:focus {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(11, 95, 255, 0.1);
-  outline: none;
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 80px 20px 40px;
+}
+.hero h1 {
+  font-family: var(--font-serif);
+  font-size: 42px;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+.hero-sub {
+  color: var(--muted);
+  font-style: italic;
+  font-size: 18px;
 }
 
-/* Checkbox e booleanos */
-form input[type="checkbox"] {
-  accent-color: var(--accent);
-  transform: scale(1.2);
-  margin-right: 8px;
+/* Home: Seções */
+.sections-list {
+  margin-top: 60px;
+}
+.section-shelf {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  transform: translateY(0);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-link:hover {
+  transform: translateY(-6px);
+}
+.card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+.card-title {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+.card-subtitle {
+  color: var(--muted);
+  font-size: 15px;
 }
 
-/* Botão universal */
-form button,
-form .btn {
-  background: var(--accent);
-  color: white;
-  padding: 10px 18px;
-  border-radius: 8px;
-  border: 0;
-  font-weight: 600;
-  cursor: pointer;
-  align-self: flex-start;
-  transition: all 0.2s ease;
+/* Category blocks */
+.category-block {
+  margin-top: 40px;
+  padding: 20px;
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.category-title {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  margin-bottom: 16px;
+  color: var(--gold);
+  border-bottom: 1px solid rgba(176,140,0,0.2);
+  padding-bottom: 6px;
 }
 
-form button:hover,
-form .btn:hover {
-  background: #0848d8;
-  transform: translateY(-1px);
+/* Text (page) */
+.text-full {
+  background: var(--surface);
+  padding: 48px;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  margin-top: 40px;
 }
+.text-full h1 {
+  font-family: var(--font-serif);
+  font-size: 36px;
+  margin-bottom: 8px;
+}
+.text-full h3 {
+  color: var(--muted);
+  font-weight: normal;
+  margin-bottom: 16px;
+}
+.text-full .meta {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+.text-body {
+  font-family: var(--font-serif);
+  font-size: 19px;
+  line-height: 1.8;
+  color: #2f2f2f;
+}
+.text-body p { margin-bottom: 1em; }
 
-/* Versão dourada opcional */
-form button.alt {
-  background: var(--gold);
-}
-form button.alt:hover {
-  background: #8a6b00;
-}
-
-/* TextArea especial */
-form textarea {
-  font-family: var(--font-sans);
-  line-height: 1.5;
-}
-
-/* Mensagens de erro (caso adicione futuramente via FlaskForm.errors) */
-.form-error {
-  color: #b91c1c;
-  background: #fee2e2;
-  border-radius: 6px;
-  padding: 6px 8px;
+/* Footer */
+.site-footer {
+  text-align: center;
+  padding: 40px 0;
+  color: var(--muted);
+  border-top: 1px solid rgba(0,0,0,0.05);
+  margin-top: 60px;
   font-size: 14px;
 }
 
-/* Layout alternativo: formulário largo */
-.form-wide {
-  max-width: 900px;
+/* Animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease;
 }
-
-/* Compacto (útil em painéis) */
-.form-compact {
-  padding: 16px;
-  gap: 12px;
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
-
-/* Estilo do título */
-form h2, form h3 {
-  margin-top: 0;
-  font-family: var(--font-serif);
-  color: var(--text);
-  font-weight: 700;
-}
-
-/* Campos alinhados lado a lado (opcional) */
-.form-inline {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-.form-inline > * {
-  flex: 1;
-  min-width: 200px;
-}
-
-/* Placeholder mais elegante */
-::placeholder {
-  color: var(--muted);
-  opacity: 0.8;
-}
-
-/* Feedback visual de envio */
-form.submitting {
-  opacity: 0.6;
-  pointer-events: none;
-}
-
-/* ==========================
-   ADMIN - TABELAS DE CONTATOS
-   ========================== */
-
-.data-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 16px;
-  background: var(--surface);
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
-}
-
-.data-table th, .data-table td {
-  padding: 12px 16px;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
-  vertical-align: top;
-  text-align: left;
-}
-
-.data-table th {
-  background: rgba(11,95,255,0.06);
-  font-weight: 700;
-}
-
-.data-table tr.responded {
-  background-color: #f3f4f6;
-  color: var(--muted);
-}
-
-.badge {
-  display: inline-block;
-  padding: 4px 8px;
-  border-radius: 6px;
-  font-size: 13px;
-  font-weight: 600;
-}
-.badge-success {
-  background: #e6ffed;
-  color: #07532a;
-}
-.badge-warning {
-  background: #fff8e1;
-  color: #8a6b00;
-}
-
-.category-block {
-  margin-top: 32px;
-  padding: 16px;
-  background: var(--surface);
-  border-radius: var(--radius);
-  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
-}
-
-.category-title {
-  font-family: var(--font-serif);
-  font-size: 22px;
-  margin-bottom: 12px;
-  color: var(--gold);
-  border-bottom: 2px solid rgba(176,140,0,0.2);
-  padding-bottom: 4px;
-}
-

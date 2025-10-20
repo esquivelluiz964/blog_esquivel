@@ -285,3 +285,45 @@ form h2 {
   color: var(--gold);
 }
 
+.text-body h1, .text-body h2, .text-body p, .text-body ul {
+  margin-bottom: 1em;
+  line-height: 1.6;
+}
+.text-body h1 {
+  font-size: 1.8rem;
+  margin-top: 1.5em;
+}
+.text-body ul {
+  list-style-type: disc;
+  margin-left: 2em;
+}
+
+.text-body blockquote {
+  border-left: 4px solid var(--gold);
+  background: rgba(176,140,0,0.05);
+  padding: 1em 1.2em;
+  margin: 1.5em 0;
+  border-radius: 8px;
+  font-style: italic;
+}
+
+.text-body hr {
+  border: none;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  margin: 2em 0;
+}
+
+.text-body strong {
+  color: var(--gold);
+}
+
+.text-body h2 {
+  font-size: 1.5rem;
+  margin-top: 2em;
+  color: var(--gold);
+}
+
+.fade-in {
+  opacity: 1 !important;
+  transform: none !important;
+}
